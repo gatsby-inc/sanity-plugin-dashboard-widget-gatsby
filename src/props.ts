@@ -8,7 +8,7 @@ import { stateReducer$ } from './reducers'
 const noop = () => void 0
 
 const INITIAL_PROPS = {
-  title: 'Netlify sites',
+  title: 'Gatsby Preview instances',
   sites: [],
   isLoading: true,
   onDeploy: noop
@@ -16,12 +16,13 @@ const INITIAL_PROPS = {
 
 export const props$ = (options: WidgetOptions) => {
   const sites = (options.sites || []).map(site => ({
-    id: site.apiId,
+    id: site.siteId,
     name: site.name,
     title: site.title,
-    buildHookId: site.buildHookId,
-    url: site.name && `https://${site.name}.netlify.com/`,
-    adminUrl: site.name && `https://app.netlify.com/sites/${site.name}`
+    orgId: site.orgId,
+    url: site.name && `https://${site.name}.staging-previews.gtsb.io/`,
+    adminUrl:
+      site.name && `https://staging.gtsb.io/dashboard/${site.orgId}/sites/overview/${site.siteId}`
   }))
   const [onDeploy$, onDeploy] = createEventHandler<Site>()
   const setSitesAction$ = of(sites).pipe(map(sites => ({ type: 'setSites', sites })))

@@ -1,8 +1,8 @@
 export interface SiteWidgetOption {
-  apiId: string
+  siteId: string
   name?: string
   title: string
-  buildHookId: string
+  orgId: string
   hostname?: string
 }
 export interface WidgetOptions {
@@ -17,7 +17,7 @@ export interface Site {
   id: string
   url?: string
   adminUrl?: string
-  buildHookId: string
+  orgId: string
 }
 
 export interface Props {

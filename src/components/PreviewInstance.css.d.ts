@@ -10,5 +10,5 @@ interface Namespace {
   title: string
   actions: string
 }
-declare const siteItem: Namespace
-export default siteItem
+declare const previewInstance: Namespace
+export default previewInstance

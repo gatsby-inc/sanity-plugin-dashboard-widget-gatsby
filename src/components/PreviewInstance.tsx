@@ -1,6 +1,6 @@
 import React from 'react'
 import DefaultButton from 'part:@sanity/components/buttons/default'
-import styles from './SiteItem.css'
+import styles from './PreviewInstance.css'
 import { DeployAction, Site } from '../types'
 
 interface Props {
@@ -8,7 +8,8 @@ interface Props {
   onDeploy: DeployAction
 }
 
-export default class SiteItem extends React.Component<Props> {
+
+export default class PreviewInstanceItem extends React.Component<Props> {
   private badge = React.createRef<HTMLImageElement>()
   private imgInterval?: any
 
@@ -51,15 +52,15 @@ export default class SiteItem extends React.Component<Props> {
         {' ('}
         {site.url && (
           <span>
-            <a href={site.url}>view</a>
+            <a href={site.url}>Preview</a>
           </span>
         )}
         {site.adminUrl && (
           <span>
-            , <a href={site.adminUrl}>admin</a>
+            , <a href={site.adminUrl}>Gatsby Dashboard</a>
           </span>
         )}
-        {')'}
+         {')'}
       </>
     )
   }
@@ -73,14 +74,11 @@ export default class SiteItem extends React.Component<Props> {
             {site.title}
             {this.renderLinks()}
           </h4>
-          <div>
-            <img src={this.getImageUrl()} ref={this.badge} />
-          </div>
         </div>
-        {site.buildHookId && (
+        {site.id && (
           <div className={styles.actions}>
             <DefaultButton inverted onClick={this.handleDeployButtonClicked}>
-              Deploy
+              Preview
             </DefaultButton>
           </div>
         )}

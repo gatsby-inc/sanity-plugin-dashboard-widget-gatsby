@@ -1,8 +1,8 @@
 import Spinner from 'part:@sanity/components/loading/spinner'
 import React from 'react'
-import styles from './NetlifyWidget.css'
+import styles from './GatsbyWidget.css'
 import { DeployAction, Site } from '../types'
-import SiteItem from './SiteItem'
+import SiteItem from './PreviewInstance'
 
 interface Props {
   isLoading: boolean
@@ -10,7 +10,7 @@ interface Props {
   onDeploy: DeployAction
 }
 
-export default class SiteList extends React.Component<Props> {
+export default class PreviewList extends React.Component<Props> {
   render() {
     const { isLoading, onDeploy, sites } = this.props
     if (isLoading) {

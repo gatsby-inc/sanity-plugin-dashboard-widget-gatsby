@@ -1,10 +1,11 @@
-# Sanity Dashboard Widget: Netlify
+# Sanity Dashboard Widget: Gatsby
 
 Sanity Studio Dashboard Widget for triggering Netlify builds.
 
 ## Installing
 
 ### Install the dashboard plugin
+
 To get dashboard support in Sanity Studio in general:
 
 `sanity install @sanity/dashboard`
@@ -17,70 +18,69 @@ To get dashboard support in Sanity Studio in general:
 
 1. Implement your own dashboardConfig. In your `sanity.json` file, append the following line to the `parts` array:
 
-  ```json
-  {
-    "implements": "part:@sanity/dashboard/config",
-    "path": "src/dashboardConfig.js"
-  }
-  ```
+```json
+{
+  "implements": "part:@sanity/dashboard/config",
+  "path": "src/dashboardConfig.js"
+}
+```
 
 2. Create the file `src/dashboardConfig.js` and inlcude the `netlify` widget config like this:
 
-  ```js
-  export default {
-    widgets: [
-        {
-        name: 'netlify',
-        options: {
-          title: 'My Netlify deploys',
-          sites: [
-            {
-              title: 'Sanity Studio',
-              apiId: 'xxxxx-yyyy-zzzz-xxxx-yyyyyyyy',
-              buildHookId: 'xxxyyyxxxyyyyxxxyyy',
-              name: 'sanity-gatsby-blog-20-studio',
-            },
-            {
-              title: 'Website',
-              apiId: 'yyyyy-xxxxx-zzzz-xxxx-yyyyyyyy',
-              buildHookId: 'yyyyxxxxxyyyxxdxxx',
-              name: 'sanity-gatsby-blog-20-web'
-            }
-          ]
-        }
+```js
+export default {
+  widgets: [
+    {
+      name: 'netlify',
+      options: {
+        description:
+          'These are your Gatsby Preview instance.',
+        sites: [
+          {
+            title: 'Blog Website',
+            name: '<siteName>',
+            siteId: '<siteId>',
+            orgId: '<orgId>'
+          }
+        ]
       }
-    ]
-  }
-  ```
+    }
+  ]
+}
+```
+
 ### Widget options
+
 `title` - Override the widget default title
 
-`sites[]` - Your Netlify sites to show deploys for
-  - `apiIdId`- The Netfliy API id of your site
-  - `buildHookId` - The id of a build hook you have created for your site within the Netlify administration panel (see *Settings > Continous Deployment*).
-  - `title` - Override the site name with a custom title
-  - `name` - The Netlify site name
+`instances[]` - Your Gatsby Preview instances to show Previews for for
+
+- `instanceId`- The Gatsby Preview instance id of your site
+- `orgId` - The org id that your preview instance is in
+- `title` - Override the preview name with a custom title
+- `name` - The Gatsby Preview instance name
 
 ## Developing on this module
 
 To simulate using your development version as a real module inside a studio, you can do the following:
 
-* Run `npm install && npm link` from the root of this repository.
-* Run `npm run watch` to start developing and build the module when changes are made.
+- Run `npm install && npm link` from the root of this repository.
+- Run `npm run watch` to start developing and build the module when changes are made.
 
 #### Displaying your development version inside a studio
 
 **With the mono-repo's `test-studio`:**
 
-  * Bootstrap the monorepo: `npm run bootstrap`
-  * Add `sanity-plugin-dashboard-widget-netlify` with the current version number to `package.json` in the `test-studio` root folder (but don't run `npm install` afterwards)
-  * Run `npm link sanity-plugin-dashboard-widget-netlify` inside the mono-repo's root.
-  * Restart the `test-studio`
+- Bootstrap the monorepo: `npm run bootstrap`
+- Add `sanity-plugin-dashboard-widget-netlify` with the current version number to `package.json` in the `test-studio` root folder (but don't run `npm install` afterwards)
+- Run `npm link sanity-plugin-dashboard-widget-netlify` inside the mono-repo's root.
+- Restart the `test-studio`
 
 **With a regular Sanity Studio:**
-  * Run `npm install`
-  * Add `sanity-plugin-dashboard-widget-netlify` with the current version number to `package.json`.
-  * Run `npm link sanity-plugin-dashboard-widget-netlify`
-  * Start the studio
+
+- Run `npm install`
+- Add `sanity-plugin-dashboard-widget-netlify` with the current version number to `package.json`.
+- Run `npm link sanity-plugin-dashboard-widget-netlify`
+- Start the studio
 
 When you are done and have published your new version, you can run `npm unlink` inside this repo, and `npm unlink sanity-plugin-dashboard-widget-netlify` inside the mono-repo or studio to get back to the normal state. Then run `npm run bootstrap` for the mono-repo or `npm install` inside the regular studio to use the published version.

@@ -4,8 +4,13 @@
   display: flex;
 }
 
+ul {
+  padding-left: 0;
+}
+
 .status {
   flex: 1;
+  margin: auto;
   padding: var(--small-padding) var(--medium-padding) var(--small-padding) var(--medium-padding);
 }
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import AnchorButton from 'part:@sanity/components/buttons/anchor'
-import styles from './NetlifyWidget.css'
+import styles from './GatsbyWidget.css'
 import { Props } from '../types'
-import SiteList from './SiteList'
+import SiteList from './PreviewList'
 
-export default class NetlifyWidget extends React.Component<Props> {
+export default class GatsbyWidget extends React.Component<Props> {
   render() {
-    const netlifySitesUrl = 'https://app.netlify.com/account/sites'
+    const gatsbySitesUrl = 'https://gatsbyjs.com/dashboard/sites'
     const { title, description, isLoading, sites, onDeploy } = this.props
 
     return (
@@ -23,12 +23,12 @@ export default class NetlifyWidget extends React.Component<Props> {
         <div className={styles.footer}>
           <AnchorButton
             disabled={isLoading}
-            href={isLoading ? undefined : netlifySitesUrl}
+            href={isLoading ? undefined : gatsbySitesUrl}
             bleed
             color="primary"
             kind="simple"
           >
-            Manage sites at Netlify
+            Manage Preview instances at Gatsby
           </AnchorButton>
         </div>
       </div>
