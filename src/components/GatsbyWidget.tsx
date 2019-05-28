@@ -2,12 +2,12 @@ import React from 'react'
 import AnchorButton from 'part:@sanity/components/buttons/anchor'
 import styles from './GatsbyWidget.css'
 import { Props } from '../types'
-import SiteList from './PreviewList'
+import PreviewList from './PreviewList'
 
 export default class GatsbyWidget extends React.Component<Props> {
   render() {
     const gatsbySitesUrl = 'https://gatsbyjs.com/dashboard/sites'
-    const { title, description, isLoading, sites, onDeploy } = this.props
+    const { title, description, isLoading, instances, onPreview } = this.props
 
     return (
       <div className={styles.container}>
@@ -18,7 +18,7 @@ export default class GatsbyWidget extends React.Component<Props> {
           {description && (
             <p className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
           )}
-          <SiteList isLoading={isLoading} onDeploy={onDeploy} sites={sites} />
+          <PreviewList isLoading={isLoading} onPreview={onPreview} instances={instances} />
         </div>
         <div className={styles.footer}>
           <AnchorButton

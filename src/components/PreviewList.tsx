@@ -1,33 +1,33 @@
 import Spinner from 'part:@sanity/components/loading/spinner'
 import React from 'react'
 import styles from './GatsbyWidget.css'
-import { DeployAction, Site } from '../types'
-import SiteItem from './PreviewInstance'
+import { PreviewAction, Instance } from '../types'
+import PreviewInstance from './PreviewInstance'
 
 interface Props {
   isLoading: boolean
-  sites?: Site[]
-  onDeploy: DeployAction
+  instances?: Instance[]
+  onPreview: PreviewAction
 }
 
 export default class PreviewList extends React.Component<Props> {
   render() {
-    const { isLoading, onDeploy, sites } = this.props
+    const { isLoading, onPreview, instances } = this.props
     if (isLoading) {
-      return <Spinner center message="Loading sites…" />
+      return <Spinner center message="Loading instances..." />
     }
-    if (!sites || (sites && sites.length === 0)) {
+    if (!instances || (instances && instances.length === 0)) {
       return (
         <div className={styles.error}>
-          No sites are defined in the widget options. Please check your config.
+          No Preview instances are defined in the widget options. Please check your config.
         </div>
       )
     }
     return (
-      <ul className={styles.sites}>
-        {sites.map((site, index) => {
+      <ul className={styles.instances}>
+        {instances.map((instance, index) => {
           return (
-            <SiteItem onDeploy={onDeploy} site={site} key={`site-${index}`} />
+            <PreviewInstance onPreview={onPreview} instance={instance} key={`instance-${index}`} />
           )
         })}
       </ul>

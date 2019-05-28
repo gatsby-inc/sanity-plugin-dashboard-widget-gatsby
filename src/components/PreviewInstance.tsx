@@ -1,15 +1,15 @@
 import React from 'react'
 import DefaultButton from 'part:@sanity/components/buttons/default'
 import styles from './PreviewInstance.css'
-import { DeployAction, Site } from '../types'
+import { PreviewAction, Instance } from '../types'
 
 interface Props {
-  site: Site
-  onDeploy: DeployAction
+  instance: Instance
+  onPreview: PreviewAction
 }
 
 
-export default class PreviewInstanceItem extends React.Component<Props> {
+export default class PreviewInstance extends React.Component<Props> {
   private badge = React.createRef<HTMLImageElement>()
   private imgInterval?: any
 
@@ -23,16 +23,16 @@ export default class PreviewInstanceItem extends React.Component<Props> {
     window.clearInterval(this.imgInterval)
   }
 
-  handleDeployButtonClicked = (_: MouseEvent) => {
-    this.props.onDeploy(this.props.site)
+  handlePreviewButtonClicked = (_: MouseEvent) => {
+    this.props.onPreview(this.props.instance)
     setTimeout(() => {
       this.updateImage()
     }, 1000)
   }
 
   private getImageUrl() {
-    const { site } = this.props
-    return `https://api.netlify.com/api/v1/badges/${site.id}/deploy-status`
+    const { instance } = this.props
+    return `https://api.netlify.com/api/v1/badges/${instance.id}/deploy-status`
   }
 
   private updateImage() {
@@ -43,21 +43,21 @@ export default class PreviewInstanceItem extends React.Component<Props> {
   }
 
   private renderLinks() {
-    const { site } = this.props
-    if (!(site.url || site.adminUrl)) {
+    const { instance } = this.props
+    if (!(instance.url || instance.adminUrl)) {
       return null
     }
     return (
       <>
         {' ('}
-        {site.url && (
+        {instance.url && (
           <span>
-            <a href={site.url}>Preview</a>
+            <a href={instance.url}>Preview</a>
           </span>
         )}
-        {site.adminUrl && (
+        {instance.adminUrl && (
           <span>
-            , <a href={site.adminUrl}>Gatsby Dashboard</a>
+            , <a href={instance.adminUrl}>Gatsby Dashboard</a>
           </span>
         )}
          {')'}
@@ -66,18 +66,18 @@ export default class PreviewInstanceItem extends React.Component<Props> {
   }
 
   render() {
-    const { site } = this.props
+    const { instance } = this.props
     return (
       <li className={styles.root}>
         <div className={styles.status}>
           <h4 className={styles.title}>
-            {site.title}
+            {instance.title}
             {this.renderLinks()}
           </h4>
         </div>
-        {site.id && (
+        {instance.id && (
           <div className={styles.actions}>
-            <DefaultButton inverted onClick={this.handleDeployButtonClicked}>
+            <DefaultButton inverted onClick={this.handlePreviewButtonClicked}>
               Preview
             </DefaultButton>
           </div>

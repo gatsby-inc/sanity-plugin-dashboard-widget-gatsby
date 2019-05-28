@@ -1,52 +1,55 @@
 import { from, merge, of } from 'rxjs'
 import { createEventHandler } from 'react-props-stream'
 import { catchError, map, startWith, switchMap, mergeMap, toArray } from 'rxjs/operators'
-import { deploy } from './datastores/deploy'
-import { Site, WidgetOptions } from './types'
+import { preview } from './datastores/preview'
+import { Instance, WidgetOptions } from './types'
 import { stateReducer$ } from './reducers'
 
 const noop = () => void 0
 
 const INITIAL_PROPS = {
   title: 'Gatsby Preview instances',
-  sites: [],
+  instances: [],
   isLoading: true,
-  onDeploy: noop
+  onPreview: noop
 }
 
 export const props$ = (options: WidgetOptions) => {
-  const sites = (options.sites || []).map(site => ({
-    id: site.siteId,
-    name: site.name,
-    title: site.title,
-    orgId: site.orgId,
-    url: site.name && `https://${site.name}.staging-previews.gtsb.io/`,
+  const instances = (options.instances || []).map(instance => ({
+    id: instance.instanceId,
+    name: instance.name,
+    title: instance.title,
+    orgId: instance.orgId,
+    url: instance.name && `https://${instance.name}.staging-previews.gtsb.io/`,
     adminUrl:
-      site.name && `https://staging.gtsb.io/dashboard/${site.orgId}/sites/overview/${site.siteId}`
+      instance.name &&
+      `https://staging.gtsb.io/dashboard/${instance.orgId}/sites/overview/${instance.instanceId}`
   }))
-  const [onDeploy$, onDeploy] = createEventHandler<Site>()
-  const setSitesAction$ = of(sites).pipe(map(sites => ({ type: 'setSites', sites })))
-  const deployAction$ = onDeploy$.pipe(map(site => ({ type: 'deploy/started', site })))
-  const deployResult$ = onDeploy$.pipe(switchMap(site => deploy(site)))
-  const deployCompletedAction$ = deployResult$.pipe(
+  const [onPreview$, onPreview] = createEventHandler<Instance>()
+  const setPreviewActions$ = of(instances).pipe(
+    map(instances => ({ type: 'setInstances', instances }))
+  )
+  const previewAction$ = onPreview$.pipe(map(instance => ({ type: 'preview/started', instance })))
+  const previewResult$ = onPreview$.pipe(switchMap(instance => preview(instance)))
+  const previewCompletedAction$ = previewResult$.pipe(
     map(
-      result => ({ type: 'deploy/completed', ...result }),
-      catchError(error => of({ type: 'deploy/failed', error }))
+      result => ({ type: 'preview/completed', ...result }),
+      catchError(error => of({ type: 'preview/failed', error }))
     )
   )
 
-  merge(setSitesAction$, deployAction$, deployCompletedAction$)
+  merge(setPreviewActions$, previewAction$, previewCompletedAction$)
     .pipe(stateReducer$)
     .subscribe()
 
-  return of(sites).pipe(
-    map(sites => {
+  return of(instances).pipe(
+    map(instances => {
       return {
-        sites,
+        instances,
         title: options.title || INITIAL_PROPS.title,
         description: options.description,
         isLoading: false,
-        onDeploy
+        onPreview
       }
     }),
     startWith(INITIAL_PROPS)

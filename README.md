@@ -1,6 +1,6 @@
 # Sanity Dashboard Widget: Gatsby
 
-Sanity Studio Dashboard Widget for triggering Netlify builds.
+Sanity Studio Dashboard Widget for triggering Gatsby Preview instances.
 
 ## Installing
 
@@ -10,9 +10,9 @@ To get dashboard support in Sanity Studio in general:
 
 `sanity install @sanity/dashboard`
 
-### Install the Netlify widget plugin
+### Install the Gatsby widget plugin
 
-`sanity install dashboard-widget-netlify`
+`sanity install dashboard-widget-gatsby`
 
 ## Configuring
 
@@ -25,21 +25,21 @@ To get dashboard support in Sanity Studio in general:
 }
 ```
 
-2. Create the file `src/dashboardConfig.js` and inlcude the `netlify` widget config like this:
+2. Create the file `src/dashboardConfig.js` and inlcude the `gatsby` widget config like this:
 
 ```js
 export default {
   widgets: [
     {
-      name: 'netlify',
+      name: 'gatsby',
       options: {
         description:
           'These are your Gatsby Preview instance.',
-        sites: [
+        instances: [
           {
             title: 'Blog Website',
             name: '<siteName>',
-            siteId: '<siteId>',
+            instanceId: '<siteId>',
             orgId: '<orgId>'
           }
         ]
@@ -72,15 +72,15 @@ To simulate using your development version as a real module inside a studio, you
 **With the mono-repo's `test-studio`:**
 
 - Bootstrap the monorepo: `npm run bootstrap`
-- Add `sanity-plugin-dashboard-widget-netlify` with the current version number to `package.json` in the `test-studio` root folder (but don't run `npm install` afterwards)
-- Run `npm link sanity-plugin-dashboard-widget-netlify` inside the mono-repo's root.
+- Add `sanity-plugin-dashboard-widget-gatsby` with the current version number to `package.json` in the `test-studio` root folder (but don't run `npm install` afterwards)
+- Run `npm link sanity-plugin-dashboard-widget-gatsby` inside the mono-repo's root.
 - Restart the `test-studio`
 
 **With a regular Sanity Studio:**
 
 - Run `npm install`
-- Add `sanity-plugin-dashboard-widget-netlify` with the current version number to `package.json`.
-- Run `npm link sanity-plugin-dashboard-widget-netlify`
+- Add `sanity-plugin-dashboard-widget-gatsby` with the current version number to `package.json`.
+- Run `npm link sanity-plugin-dashboard-widget-gatsby`
 - Start the studio
 
-When you are done and have published your new version, you can run `npm unlink` inside this repo, and `npm unlink sanity-plugin-dashboard-widget-netlify` inside the mono-repo or studio to get back to the normal state. Then run `npm run bootstrap` for the mono-repo or `npm install` inside the regular studio to use the published version.
+When you are done and have published your new version, you can run `npm unlink` inside this repo, and `npm unlink sanity-plugin-dashboard-widget-gatsby` inside the mono-repo or studio to get back to the normal state. Then run `npm run bootstrap` for the mono-repo or `npm install` inside the regular studio to use the published version.

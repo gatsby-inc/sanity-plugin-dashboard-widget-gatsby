@@ -1,50 +1,50 @@
 import { scan } from 'rxjs/operators'
-import { Site } from './types'
+import { Instance } from './types'
 
-interface Deployment {
+interface Preview {
   id: string
 }
 
 interface Action {
   type: string
-  sites?: Site[]
-  site?: Site
+  instances?: Instance[]
+  instance?: Instance
   error?: Error
-  deployments?: Deployment[]
+  previews?: Preview[]
 }
 
 interface State {
-  sites: Site[]
+  instances: Instance[]
   action: Action
 }
 
 export const stateReducer$ = scan((state: State, action: Action) => {
   switch (action.type) {
-    case 'setSites':
-      return { ...state, sites: action.sites || [] }
-    case 'deploy/started':
+    case 'setInstances':
+      return { ...state, instances: action.instances || [] }
+    case 'preview/started':
       return {
         ...state,
-        sites: state.sites.map((site: Site) => {
-          if (action.site && site.id === action.site.id) {
-            return { ...site }
+        instances: state.instances.map((instance: Instance) => {
+          if (action.instance && instance.id === action.instance.id) {
+            return { ...instance }
           }
-          return site
+          return instance
         })
       }
-    case 'deploy/failed':
+    case 'preview/failed':
       return {
         ...state,
         error: action.error
       }
-    case 'deploy/completed':
+    case 'preview/completed':
       return {
         ...state,
-        sites: state.sites.map((site: Site) => {
-          if (action.site && site.id === action.site.id) {
-            return { ...site, error: action.error }
+        instances: state.instances.map((instance: Instance) => {
+          if (action.instance && instance.id === action.instance.id) {
+            return { ...instance, error: action.error }
           }
-          return site
+          return instance
         })
       }
     default:

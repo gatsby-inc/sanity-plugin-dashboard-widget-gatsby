@@ -4,7 +4,7 @@ export const header: string
 export const title: string
 export const error: string
 export const content: string
-export const sites: string
+export const instances: string
 export const footer: string
 interface Namespace {
   container: string
@@ -13,7 +13,7 @@ interface Namespace {
   title: string
   error: string
   content: string
-  sites: string
+  instances: string
   footer: string
 }
 declare const gatsbyWidget: Namespace

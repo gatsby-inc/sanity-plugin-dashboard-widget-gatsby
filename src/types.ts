@@ -1,5 +1,5 @@
-export interface SiteWidgetOption {
-  siteId: string
+export interface InstanceWidgetOption {
+  instanceId: string
   name?: string
   title: string
   orgId: string
@@ -8,10 +8,10 @@ export interface SiteWidgetOption {
 export interface WidgetOptions {
   title?: string
   description?: string
-  sites: SiteWidgetOption[]
+  instances: InstanceWidgetOption[]
 }
 
-export interface Site {
+export interface Instance {
   title: string
   name?: string
   id: string
@@ -23,9 +23,9 @@ export interface Site {
 export interface Props {
   title?: string
   description?: string
-  sites?: Site[]
+  instances?: Instance[]
   isLoading: boolean
-  onDeploy: DeployAction
+  onPreview: PreviewAction
 }
 
-export type DeployAction = (site: Site) => void
+export type PreviewAction = (site: Instance) => void
