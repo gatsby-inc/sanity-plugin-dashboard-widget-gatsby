@@ -20,10 +20,10 @@ export const props$ = (options: WidgetOptions) => {
     name: instance.name,
     title: instance.title,
     orgId: instance.orgId,
-    url: instance.name && `https://${instance.name}.staging-previews.gtsb.io/`,
+    url: instance.name && `https://${instance.name}.gtsb.io/`,
     adminUrl:
       instance.name &&
-      `https://staging.gtsb.io/dashboard/${instance.orgId}/sites/overview/${instance.instanceId}`
+      `https://gatsbyjs.com/dashboard/${instance.orgId}/sites/overview/${instance.instanceId}`
   }))
   const [onPreview$, onPreview] = createEventHandler<Instance>()
   const setPreviewActions$ = of(instances).pipe(

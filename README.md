@@ -53,12 +53,12 @@ export default {
 
 `title` - Override the widget default title
 
-`instances[]` - Your Gatsby Preview instances to show Previews for for
+`instances[]` - Your Gatsby Preview instances to show Previews for 
 
 - `instanceId`- The Gatsby Preview instance id of your site
 - `orgId` - The org id that your preview instance is in
 - `title` - Override the preview name with a custom title
-- `name` - The Gatsby Preview instance name
+- `name` - The Gatsby Preview instance name (top-level domain of your Gatsby preview instance URL)
 
 ## Developing on this module
 

@@ -12,7 +12,7 @@ export function preview(instance: Instance) {
   if (!instance.id) {
     return of(new Error('Instance missing instanceId'))
   }
-  return statusCodeRequest(`https://webhook.staging.gtsb.io/hooks/data_source/${instance.id}`, {
+  return statusCodeRequest(`https://webhook.gatsbyjs.com/hooks/data_source/${instance.id}`, {
     method: 'POST'
   }).pipe(map(result => ({ result, instance })))
 }
