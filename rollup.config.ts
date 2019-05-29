@@ -10,7 +10,7 @@ import * as glob from 'glob'
 
 const pkg = require('./package.json')
 
-const libraryName = 'sanity-plugin-dashboard-widget-netlify'
+const libraryName = 'sanity-plugin-dashboard-widget-gatsby'
 
 /* initialize CSS files because of a catch-22 situation:
    https://github.com/rollup/rollup/issues/1404 */

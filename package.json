@@ -1,17 +1,17 @@
 {
-  "name": "sanity-plugin-dashboard-widget-netlify",
+  "name": "sanity-plugin-dashboard-widget-gatsby",
   "version": "1.0.1",
-  "description": "Sanity Studio Dashboard Widget for triggering Netlify builds",
+  "description": "Sanity Studio Dashboard Widget for triggering Gatsby builds",
   "keywords": [
     "sanity",
     "plugin",
     "dashboard",
     "widget",
-    "netlify"
+    "gatsby"
   ],
-  "main": "dist/sanity-plugin-dashboard-widget-netlify.umd.js",
-  "module": "dist/sanity-plugin-dashboard-widget-netlify.es5.js",
-  "typings": "dist/types/sanity-plugin-dashboard-widget-netlify.d.ts",
+  "main": "dist/sanity-plugin-dashboard-widget-gatsby.umd.js",
+  "module": "dist/sanity-plugin-dashboard-widget-gatsby.es5.js",
+  "typings": "dist/types/sanity-plugin-dashboard-widget-gatsby.d.ts",
   "files": [
     "dist",
     "sanity.json"
@@ -29,9 +29,9 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/sanity-io/sanity-plugin-dashboard-widget-netlify/issues"
+    "url": "https://github.com/sanity-io/sanity-plugin-dashboard-widget-gatsby/issues"
   },
-  "homepage": "https://github.com/sanity-io/sanity-plugin-dashboard-widget-netlify#readme",
+  "homepage": "https://github.com/sanity-io/sanity-plugin-dashboard-widget-gatsby#readme",
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
