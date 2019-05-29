@@ -37,10 +37,10 @@ export default {
           'These are your Gatsby Preview instance.',
         instances: [
           {
-            title: 'Blog Website',
-            name: '<siteName>',
-            instanceId: '<siteId>',
-            orgId: '<orgId>'
+            title: '<widgetTitle>',
+            name: '<previewInstanceName>',
+            instanceId: '<previewInstanceId>',
+            orgId: '<previewInstanceOrgId>'
           }
         ]
       }
@@ -53,7 +53,7 @@ export default {
 
 `title` - Override the widget default title
 
-`instances[]` - Your Gatsby Preview instances to show Previews for 
+`instances[]` - A list of your Gatsby Preview instances
 
 - `instanceId`- The Gatsby Preview instance id of your site
 - `orgId` - The org id that your preview instance is in
