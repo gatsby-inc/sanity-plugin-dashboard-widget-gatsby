@@ -2,7 +2,6 @@ export interface InstanceWidgetOption {
   instanceId: string
   name?: string
   title: string
-  orgId: string
   hostname?: string
 }
 export interface WidgetOptions {
@@ -16,8 +15,6 @@ export interface Instance {
   name?: string
   id: string
   url?: string
-  adminUrl?: string
-  orgId: string
 }
 
 export interface Props {

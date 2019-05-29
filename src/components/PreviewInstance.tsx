@@ -1,5 +1,4 @@
 import React from 'react'
-import DefaultButton from 'part:@sanity/components/buttons/default'
 import styles from './PreviewInstance.css'
 import { PreviewAction, Instance } from '../types'
 
@@ -14,31 +13,29 @@ export default class PreviewInstance extends React.Component<Props> {
     previewRestarted: false,
   }
 
-  handlePreviewButtonClicked = (_: MouseEvent) => {
+  handlePreviewButtonClicked = () => {
     this.props.onPreview(this.props.instance)
     this.setState({
       previewRestarted: true,
     })
+    setTimeout(() => {
+      this.setState({
+        previewRestarted: false,
+      })
+    }, 5000)
   }
+
   private renderLinks() {
     const { instance } = this.props
-    if (!(instance.url || instance.adminUrl)) {
+    if (!(instance.url)) {
       return null
     }
     return (
       <>
-        {' ('}
+        {` `}
         {instance.url && (
-          <span>
-            <a href={instance.url}>Open Preview</a>
-          </span>
+            <a target="_blank" rel="noopener" className={styles.link} href={instance.url}>Open Preview</a>
         )}
-        {instance.adminUrl && (
-          <span>
-            , <a href={instance.adminUrl}>Preview Dashboard</a>
-          </span>
-        )}
-         {')'}
       </>
     )
   }
@@ -51,15 +48,15 @@ export default class PreviewInstance extends React.Component<Props> {
         <div className={styles.status}>
           <h4 className={styles.title}>
             {instance.title}
-            {this.renderLinks()}
+            {previewRestarted && <span className={styles.instanceStatus}>Preview instance updated</span>}
           </h4>
-          {previewRestarted && <div><i>Preview instance restarted</i></div>}
+          {this.renderLinks()}
         </div>
         {instance.id && (
           <div className={styles.actions}>
-            <DefaultButton inverted onClick={this.handlePreviewButtonClicked}>
+            <button className={styles.defaultButton} onClick={this.handlePreviewButtonClicked}>
               Update Preview
-            </DefaultButton>
+            </button>
           </div>
         )}
       </li>

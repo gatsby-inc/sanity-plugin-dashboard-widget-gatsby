@@ -1,5 +1,4 @@
 import React from 'react'
-import AnchorButton from 'part:@sanity/components/buttons/anchor'
 import styles from './GatsbyWidget.css'
 import { Props } from '../types'
 import PreviewList from './PreviewList'
@@ -13,23 +12,18 @@ export default class GatsbyWidget extends React.Component<Props> {
       <div className={styles.container}>
         <header className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
+          <p className={styles.description}>Instant Preview Builds</p>
         </header>
         <div className={styles.content}>
-          {description && (
-            <p className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
-          )}
           <PreviewList isLoading={isLoading} onPreview={onPreview} instances={instances} />
         </div>
         <div className={styles.footer}>
-          <AnchorButton
+          <button
+            className={styles.anchorButton}
             disabled={isLoading}
-            href={isLoading ? undefined : gatsbySitesUrl}
-            bleed
-            color="primary"
-            kind="simple"
           >
-            Manage Preview instances at Gatsby
-          </AnchorButton>
+            <a target="_blank" rel="noopener" className={styles.link} href={isLoading ? undefined : gatsbySitesUrl}>Manage Preview Instances at Gatsby</a>
+          </button>
         </div>
       </div>
     )

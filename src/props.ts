@@ -8,7 +8,7 @@ import { stateReducer$ } from './reducers'
 const noop = () => void 0
 
 const INITIAL_PROPS = {
-  title: 'Gatsby Preview instances',
+  title: 'Gatsby Preview Instances',
   instances: [],
   isLoading: true,
   onPreview: noop
@@ -19,11 +19,7 @@ export const props$ = (options: WidgetOptions) => {
     id: instance.instanceId,
     name: instance.name,
     title: instance.title,
-    orgId: instance.orgId,
-    url: instance.name && `https://${instance.name}.gtsb.io/`,
-    adminUrl:
-      instance.name &&
-      `https://gatsbyjs.com/dashboard/${instance.orgId}/sites/overview/${instance.instanceId}`
+    url: instance.name && `https://${instance.name}.gtsb.io/`
   }))
   const [onPreview$, onPreview] = createEventHandler<Instance>()
   const setPreviewActions$ = of(instances).pipe(

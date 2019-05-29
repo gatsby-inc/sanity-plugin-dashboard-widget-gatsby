@@ -5,6 +5,8 @@
 }
 
 .description {
+  color: #7F7C82;
+  font-size: 1rem;
   padding: var(--small-padding) var(--medium-padding);
   margin: 0;
 }
@@ -38,4 +40,20 @@
 .footer {
   composes: footer from 'part:@sanity/dashboard/widget-styles';
   border-top: 1px solid var(--hairline-color);
+}
+
+.anchorButton {
+  background-color: white;
+  border: none;
+  color: #8A4BAF;
+}
+
+.anchorButton:hover {
+  background-color: #FCFAFF !important;
+  cursor: pointer;
+}
+
+.link {
+  color: #8A4BAF !important;
+  text-decoration: none;
 }

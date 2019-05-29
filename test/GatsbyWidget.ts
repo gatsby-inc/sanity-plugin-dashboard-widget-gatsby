@@ -9,8 +9,7 @@ describe('GatsbyWidget', () => {
           {
             title: 'Test website',
             id: '1234',
-            name: 'Test',
-            orgId: '123456'
+            name: 'Test'
           }
         ],
         isLoading: false,

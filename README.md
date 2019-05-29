@@ -33,14 +33,11 @@ export default {
     {
       name: 'gatsby',
       options: {
-        description:
-          'These are your Gatsby Preview instance.',
         instances: [
           {
-            title: '<widgetTitle>',
+            title: '<customName>',
             name: '<previewInstanceName>',
             instanceId: '<previewInstanceId>',
-            orgId: '<previewInstanceOrgId>'
           }
         ]
       }
@@ -51,13 +48,10 @@ export default {
 
 ### Widget options
 
-`title` - Override the widget default title
-
 `instances[]` - A list of your Gatsby Preview instances
 
-- `instanceId`- The Gatsby Preview instance id of your site
-- `orgId` - The org id that your preview instance is in
-- `title` - Override the preview name with a custom title
+- `instanceId`- The Gatsby Preview instance id (UUID in instance webhook url)
+- `title` - Override the Preview name with a custom title
 - `name` - The Gatsby Preview instance name (top-level domain of your Gatsby preview instance URL)
 
 ## Developing on this module
