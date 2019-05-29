@@ -10,38 +10,16 @@ interface Props {
 
 
 export default class PreviewInstance extends React.Component<Props> {
-  private badge = React.createRef<HTMLImageElement>()
-  private imgInterval?: any
-
-  componentDidMount() {
-    this.imgInterval = window.setInterval(() => {
-      this.updateImage()
-    }, 10000)
-  }
-
-  componentWillUnmount() {
-    window.clearInterval(this.imgInterval)
+  state = {
+    previewRestarted: false,
   }
 
   handlePreviewButtonClicked = (_: MouseEvent) => {
     this.props.onPreview(this.props.instance)
-    setTimeout(() => {
-      this.updateImage()
-    }, 1000)
+    this.setState({
+      previewRestarted: true,
+    })
   }
-
-  private getImageUrl() {
-    const { instance } = this.props
-    return `https://api.netlify.com/api/v1/badges/${instance.id}/deploy-status`
-  }
-
-  private updateImage() {
-    const image = this.badge && this.badge.current
-    if (image) {
-      image.src = `${this.getImageUrl()}?${new Date().getTime()}`
-    }
-  }
-
   private renderLinks() {
     const { instance } = this.props
     if (!(instance.url || instance.adminUrl)) {
@@ -67,6 +45,7 @@ export default class PreviewInstance extends React.Component<Props> {
 
   render() {
     const { instance } = this.props
+    const { previewRestarted } = this.state
     return (
       <li className={styles.root}>
         <div className={styles.status}>
@@ -74,6 +53,7 @@ export default class PreviewInstance extends React.Component<Props> {
             {instance.title}
             {this.renderLinks()}
           </h4>
+          {previewRestarted && <div><i>Preview instance restarted</i></div>}
         </div>
         {instance.id && (
           <div className={styles.actions}>
