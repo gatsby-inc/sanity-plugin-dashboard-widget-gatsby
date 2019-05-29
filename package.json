@@ -29,9 +29,9 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/sanity-io/sanity-plugin-dashboard-widget-gatsby/issues"
+    "url": "https://github.com/gatsby-inc/sanity-plugin-dashboard-widget-gatsby/issues"
   },
-  "homepage": "https://github.com/sanity-io/sanity-plugin-dashboard-widget-gatsby#readme",
+  "homepage": "https://github.com/gatsby-inc/sanity-plugin-dashboard-widget-gatsby#readme",
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
