@@ -30,12 +30,12 @@ export default class PreviewInstance extends React.Component<Props> {
         {' ('}
         {instance.url && (
           <span>
-            <a href={instance.url}>Preview</a>
+            <a href={instance.url}>Open Preview</a>
           </span>
         )}
         {instance.adminUrl && (
           <span>
-            , <a href={instance.adminUrl}>Gatsby Dashboard</a>
+            , <a href={instance.adminUrl}>Preview Dashboard</a>
           </span>
         )}
          {')'}
@@ -58,7 +58,7 @@ export default class PreviewInstance extends React.Component<Props> {
         {instance.id && (
           <div className={styles.actions}>
             <DefaultButton inverted onClick={this.handlePreviewButtonClicked}>
-              Preview
+              Update Preview
             </DefaultButton>
           </div>
         )}
