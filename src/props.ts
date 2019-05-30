@@ -8,7 +8,7 @@ import { stateReducer$ } from './reducers'
 const noop = () => void 0
 
 const INITIAL_PROPS = {
-  title: 'Gatsby Preview Instances',
+  title: 'Gatsby Cloud Instances',
   instances: [],
   isLoading: true,
   onPreview: noop

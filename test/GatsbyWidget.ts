@@ -4,7 +4,7 @@ describe('GatsbyWidget', () => {
   it('GatsbyWidget is instantiable', () => {
     expect(
       new GatsbyWidget({
-        title: 'Gatsby preview',
+        title: 'Gatsby Cloud',
         instances: [
           {
             title: 'Test website',
