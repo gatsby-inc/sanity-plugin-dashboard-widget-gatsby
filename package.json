@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-dashboard-widget-gatsby",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Sanity Studio Dashboard Widget for triggering Gatsby builds",
   "keywords": [
     "sanity",
