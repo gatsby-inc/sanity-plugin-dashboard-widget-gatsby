@@ -2,8 +2,6 @@
 
 Sanity Studio Dashboard Widget for triggering Gatsby Cloud instances.
 
-![Screenshot of the extension](screenshot.png)
-
 ## Installing
 
 ### Install the dashboard plugin
