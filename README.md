@@ -2,6 +2,8 @@
 
 Sanity Studio Dashboard Widget for triggering Gatsby Cloud instances.
 
+![Screenshot of the extension](screenshot.png)
+
 ## Installing
 
 ### Install the dashboard plugin
@@ -35,9 +37,7 @@ export default {
       options: {
         instances: [
           {
-            title: '<customName>',
             name: '<previewInstanceName>',
-            instanceId: '<previewInstanceId>',
           }
         ]
       }
@@ -48,10 +48,6 @@ export default {
 
 ### Widget options
 
-`instances[]` - A list of your Gatsby Cloud instances
-
-- `instanceId`- The Gatsby Cloud instance id (UUID in instance webhook url)
-- `title` - Override the Preview name with a custom title
 - `name` - The Gatsby Cloud instance name (top-level domain of your Gatsby Cloud instance URL)
 
 ## Developing on this module

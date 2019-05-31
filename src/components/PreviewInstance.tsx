@@ -1,65 +1,40 @@
+import Spinner from 'part:@sanity/components/loading/spinner'
 import React from 'react'
-import styles from './PreviewInstance.css'
-import { PreviewAction, Instance } from '../types'
+import styles from './GatsbyWidget.css'
+import { Instance } from '../types'
+import GatsbyLogo from "./GatsbyLogo"
 
 interface Props {
-  instance: Instance
-  onPreview: PreviewAction
+  isLoading: boolean
+  instance?: Instance
 }
 
+export default class PreviewList extends React.Component<Props> {
+  render() {
+    const { isLoading, instance } = this.props
 
-export default class PreviewInstance extends React.Component<Props> {
-  state = {
-    previewRestarted: false,
-  }
-
-  handlePreviewButtonClicked = () => {
-    this.props.onPreview(this.props.instance)
-    this.setState({
-      previewRestarted: true,
-    })
-    setTimeout(() => {
-      this.setState({
-        previewRestarted: false,
-      })
-    }, 5000)
-  }
-
-  private renderLinks() {
-    const { instance } = this.props
-    if (!(instance.url)) {
-      return null
+    if (isLoading) {
+      return <Spinner center message="Loading instances..." />
+    }
+    if (!instance || (instance && !instance.name)) {
+      return (
+        <div className={styles.error}>
+          Preview instance is not defined in the widget options. Please check your config.
+        </div>
+      )
     }
     return (
       <>
-        {` `}
-        {instance.url && (
-            <a target="_blank" rel="noopener" className={styles.link} href={instance.url}>Open Preview</a>
-        )}
-      </>
-    )
-  }
-
-  render() {
-    const { instance } = this.props
-    const { previewRestarted } = this.state
-    return (
-      <li className={styles.root}>
-        <div className={styles.status}>
-          <h4 className={styles.title}>
-            {instance.title}
-            {previewRestarted && <span className={styles.instanceStatus}>Preview instance updated</span>}
-          </h4>
-          {this.renderLinks()}
-        </div>
-        {instance.id && (
-          <div className={styles.actions}>
-            <button className={styles.defaultButton} onClick={this.handlePreviewButtonClicked}>
-              Update Preview
-            </button>
-          </div>
-        )}
-      </li>
+      <a target="_blank" rel="noopener" className={styles.link} href={instance.url}>
+        <button className={styles.defaultButton}>
+          Open Preview
+        </button>
+      </a>
+      <div className={styles.poweredBy}>
+        <p>Powered by: </p>
+        <GatsbyLogo />
+      </div>
+    </>
     )
   }
 }
