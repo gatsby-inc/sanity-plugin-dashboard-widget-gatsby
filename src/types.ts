@@ -1,5 +1,5 @@
 export interface InstanceWidgetOption {
-  name?: string
+  instanceUrl?: string
   hostname?: string
 }
 export interface WidgetOptions {
@@ -7,8 +7,7 @@ export interface WidgetOptions {
 }
 
 export interface Instance {
-  name?: string
-  url?: string
+  instanceUrl?: string
 }
 
 export interface Props {

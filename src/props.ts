@@ -9,8 +9,7 @@ const INITIAL_PROPS = {
 
 export const props$ = (options: WidgetOptions) => {
   const instances = (options.instances || []).map(instance => ({
-    name: instance.name,
-    url: instance.name && `https://${instance.name}.gtsb.io/`
+    instanceUrl: instance.instanceUrl
   }))
 
   return of(instances).pipe(

@@ -16,7 +16,7 @@ export default class PreviewList extends React.Component<Props> {
     if (isLoading) {
       return <Spinner center message="Loading instances..." />
     }
-    if (!instance || (instance && !instance.name)) {
+    if (!instance || (instance && !instance.instanceUrl)) {
       return (
         <div className={styles.error}>
           Preview instance is not defined in the widget options. Please check your config.
@@ -25,7 +25,7 @@ export default class PreviewList extends React.Component<Props> {
     }
     return (
       <>
-      <a target="_blank" rel="noopener" className={styles.link} href={instance.url}>
+      <a target="_blank" rel="noopener" className={styles.link} href={instance.instanceUrl}>
         <button className={styles.defaultButton}>
           Open Preview
         </button>

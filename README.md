@@ -35,7 +35,7 @@ export default {
       options: {
         instances: [
           {
-            name: '<previewInstanceName>',
+            instanceUrl: '<previewInstanceUrl>',
           }
         ]
       }
@@ -46,7 +46,7 @@ export default {
 
 ### Widget options
 
-- `name` - The Gatsby Cloud instance name (top-level domain of your Gatsby Cloud instance URL)
+- `name` - The Gatsby Cloud instance url 
 
 ## Developing on this module
 
