@@ -46,7 +46,7 @@ export default {
 
 ### Widget options
 
-- `name` - The Gatsby Cloud instance url 
+- `instanceUrl` - The Gatsby Cloud instance url 
 
 ## Developing on this module
 
