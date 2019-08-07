@@ -25,7 +25,7 @@ To get dashboard support in Sanity Studio in general:
 }
 ```
 
-2. Create the file `src/dashboardConfig.js` and inlcude the `gatsby` widget config like this:
+2. Create the file `src/dashboardConfig.js` and include the `gatsby` widget config like this:
 
 ```js
 export default {
