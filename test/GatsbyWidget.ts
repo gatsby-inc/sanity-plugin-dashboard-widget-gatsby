@@ -4,9 +4,9 @@ describe('GatsbyWidget', () => {
   it('GatsbyWidget is instantiable', () => {
     expect(
       new GatsbyWidget({
-        instances: [
+        sites: [
           {
-            name: 'Test'
+            siteUrl: 'www.sanity.io'
           }
         ],
         isLoading: false

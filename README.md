@@ -1,6 +1,6 @@
 # Sanity Dashboard Widget: Gatsby
 
-Sanity Studio Dashboard Widget for triggering Gatsby Cloud instances.
+Sanity Studio Dashboard Widget for triggering Gatsby Cloud sites.
 
 ## Installing
 
@@ -33,9 +33,9 @@ export default {
     {
       name: 'gatsby',
       options: {
-        instances: [
+        sites: [
           {
-            instanceUrl: '<previewInstanceUrl>',
+            siteUrl: '<siteUrl>',
           }
         ]
       }
@@ -46,7 +46,7 @@ export default {
 
 ### Widget options
 
-- `instanceUrl` - The Gatsby Cloud instance url 
+- `siteUrl` - The Gatsby Cloud site url 
 
 ## Developing on this module
 

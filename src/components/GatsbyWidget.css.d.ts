@@ -3,7 +3,7 @@ export const header: string
 export const title: string
 export const error: string
 export const content: string
-export const instances: string
+export const sites: string
 export const link: string
 export const defaultButton: string
 export const poweredBy: string
@@ -13,7 +13,7 @@ interface Namespace {
   title: string
   error: string
   content: string
-  instances: string
+  sites: string
   link: string
   defaultButton: string
   poweredBy: string

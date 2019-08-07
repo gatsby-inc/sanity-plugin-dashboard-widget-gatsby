@@ -1,16 +1,16 @@
-export interface InstanceWidgetOption {
-  instanceUrl?: string
+export interface SiteWidgetOption {
+  siteUrl?: string
   hostname?: string
 }
 export interface WidgetOptions {
-  instances: InstanceWidgetOption[]
+  sites: SiteWidgetOption[]
 }
 
-export interface Instance {
-  instanceUrl?: string
+export interface Site {
+  siteUrl?: string
 }
 
 export interface Props {
-  instances?: Instance[]
+  sites?: Site[]
   isLoading: boolean
 }

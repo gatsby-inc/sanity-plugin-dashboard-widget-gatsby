@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './GatsbyWidget.css'
 import { Props } from '../types'
-import PreviewInstance from './PreviewInstance'
+import Site from './Site'
 
 export default class GatsbyWidget extends React.Component<Props> {
   render() {
-    const { isLoading, instances } = this.props
+    const { isLoading, sites } = this.props
 
     return (
       <div className={styles.container}>
@@ -13,7 +13,7 @@ export default class GatsbyWidget extends React.Component<Props> {
           <h2 className={styles.title}>Gatsby Cloud</h2>
         </header>
         <div className={styles.content}>
-          <PreviewInstance isLoading={isLoading} instance={instances ? instances[0] : undefined} />
+          <Site isLoading={isLoading} site={sites ? sites[0] : undefined} />
         </div>
       </div>
     )

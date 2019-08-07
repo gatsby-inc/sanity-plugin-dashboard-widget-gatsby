@@ -1,33 +1,33 @@
 import Spinner from 'part:@sanity/components/loading/spinner'
 import React from 'react'
 import styles from './GatsbyWidget.css'
-import { Instance } from '../types'
+import { Site } from '../types'
 import GatsbyLogo from "./GatsbyLogo"
 
 interface Props {
   isLoading: boolean
-  instance?: Instance
+  site?: Site
 }
 
-export default class PreviewList extends React.Component<Props> {
+export default class SiteList extends React.Component<Props> {
   render() {
-    const { isLoading, instance } = this.props
+    const { isLoading, site } = this.props
 
     if (isLoading) {
-      return <Spinner center message="Loading instances..." />
+      return <Spinner center message="Loading site..." />
     }
-    if (!instance || (instance && !instance.instanceUrl)) {
+    if (!site || (site && !site.siteUrl)) {
       return (
         <div className={styles.error}>
-          Preview instance is not defined in the widget options. Please check your config.
+          Site is not defined in the widget options. Please check your config.
         </div>
       )
     }
     return (
       <>
-      <a target="_blank" rel="noopener" className={styles.link} href={instance.instanceUrl}>
+      <a target="_blank" rel="noopener" className={styles.link} href={site.siteUrl}>
         <button className={styles.defaultButton}>
-          Open Preview
+          Open site
         </button>
       </a>
       <div className={styles.poweredBy}>

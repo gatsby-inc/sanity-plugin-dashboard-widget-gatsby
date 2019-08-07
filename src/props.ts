@@ -3,19 +3,19 @@ import { map, startWith } from 'rxjs/operators'
 import { WidgetOptions } from './types'
 
 const INITIAL_PROPS = {
-  instances: [],
+  sites: [],
   isLoading: true
 }
 
 export const props$ = (options: WidgetOptions) => {
-  const instances = (options.instances || []).map(instance => ({
-    instanceUrl: instance.instanceUrl
+  const sites = (options.sites || []).map(site => ({
+    siteUrl: site.siteUrl
   }))
 
-  return of(instances).pipe(
-    map(instances => {
+  return of(sites).pipe(
+    map(sites => {
       return {
-        instances,
+        sites,
         isLoading: false
       }
     }),

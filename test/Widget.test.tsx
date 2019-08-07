@@ -3,7 +3,7 @@ import Widget from '../src/Widget'
 
 describe('Widget', () => {
   it('works', () => {
-    const options = {"instances": []}
+    const options = {"sites": []}
     const widget = <Widget {...options} />
     expect(widget.props).toEqual(options)
   })
