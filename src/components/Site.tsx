@@ -14,12 +14,12 @@ export default class SiteList extends React.Component<Props> {
     const { isLoading, site } = this.props
 
     if (isLoading) {
-      return <Spinner center message="Loading site..." />
+      return <Spinner center message="Loading Preview site..." />
     }
     if (!site || (site && !site.siteUrl)) {
       return (
         <div className={styles.error}>
-          Site is not defined in the widget options. Please check your config.
+          Gatsby Preview site is not defined in the widget options. Please check your config.
         </div>
       )
     }
@@ -27,7 +27,7 @@ export default class SiteList extends React.Component<Props> {
       <>
       <a target="_blank" rel="noopener" className={styles.link} href={site.siteUrl}>
         <button className={styles.defaultButton}>
-          Open site
+          Open Preview
         </button>
       </a>
       <div className={styles.poweredBy}>
